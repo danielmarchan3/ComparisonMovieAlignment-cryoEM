@@ -37,7 +37,19 @@ plot \
             psd = "/" + psd
             offset = find_max(psd) - ref_val
             window_size = int(384*pixel_size)
-            f.write('"{}" u ($0/{}):($1 - {}):({}) w l palette title "{}",\\\n'.format(psd, window_size, offset, i, program)) # CHANGE
+            with open(psd) as file:
+                psd_data = file.read()
+                psd_data = psd_data.split('\n')
+                psd_data = psd_data[1:-1]
+                psd_data = psd_data[:int(len(psd_data)/2)]
+
+            with open(psd, 'w') as file:
+                # Write only until 292
+                for item in psd_data:
+                    file.write("%s\n" % item)
+
+
+            f.write('"{}" u ($0/{}):($1 - {}):({}) w l palette title "{}",\\\n'.format(psd, window_size, offset, i, program))
 
     return script
 

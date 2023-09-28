@@ -22,6 +22,7 @@ template_109 = '''<?xml version="1.0" encoding="utf-16"?>
 		<Param Name="GainTranspose" Value="{gain_transpose}" />
 		<Param Name="CorrectGain" Value="{correct_gain}" />
 		<Param Name="CorrectDefects" Value="False" />
+		<Param Name="DosePerAngstromFrame" Value="{dose}" />
 	</Import>
 </Settings>'''
 
@@ -61,7 +62,7 @@ def run_10288(movie_dir, result_dir):
         os.makedirs(dest)
     ext = '.tif'
     gain = os.path.join(path, 'CountRef_CB1__00000_Feb18_23.26.46.dm4')
-    settings = template_109.format(path=path, pixel_size='0.86', extension=ext, gain=gain, gain_flip_x='False', gain_flip_y='True', gain_transpose='False', correct_gain='True')
+    settings = template_109.format(path=path, pixel_size='0.86', extension=ext, gain=gain, gain_flip_x='False', gain_flip_y='True', gain_transpose='False', correct_gain='True', dose='1.25')
 
     load_settings(path, settings)
     
@@ -79,7 +80,7 @@ def run_10196(movie_dir, result_dir):
         os.makedirs(dest)
     ext = '.tif'
     gain = os.path.join(path, 'SuperRef_sq05_3.mrc')
-    settings = template_109.format(path=path, pixel_size='0.745', extension=ext, gain=gain, gain_flip_x='True', gain_flip_y='True', gain_transpose='True', correct_gain='True')
+    settings = template_109.format(path=path, pixel_size='0.745', extension=ext, gain=gain, gain_flip_x='True', gain_flip_y='True', gain_transpose='True', correct_gain='True', dose='1.264')
     
     load_settings(path, settings)
     
@@ -96,7 +97,7 @@ def run_10314(movie_dir, result_dir):
     if not os.path.exists(dest):
         os.makedirs(dest)
     ext = '.tif'
-    settings = template_109.format(path=path, pixel_size='1.12', extension=ext, gain='', gain_flip_x='False', gain_flip_y='False', gain_transpose='False', correct_gain='False')
+    settings = template_109.format(path=path, pixel_size='1.12', extension=ext, gain='', gain_flip_x='False', gain_flip_y='False', gain_transpose='False', correct_gain='False', dose='1.51')
 
     load_settings(path, settings)
     
